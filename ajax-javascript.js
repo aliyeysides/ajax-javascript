@@ -1,7 +1,7 @@
 /**
  * Simple, lightwight and easy to use ajax function in pure javascript
- * @param  String url     [description]
- * @param  Object options [description]
+ * @param  String url     Target URL
+ * @param  Object options Please read README.md
  */
 function ajax( url , options )
 {
