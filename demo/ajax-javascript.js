@@ -76,13 +76,11 @@ function ajax( url , options )
 
 		if ( callback ) {
 			xmlhttp.onreadystatechange = function() {
-				if ( xmlhttp.readyState == 4 ) {
-					if ( xmlhttp.status == 200 || xmlhttp.status == 0 ) {
-						callback( xmlhttp.responseText );
-					} else {
-						console.log( "XMLHTTP Response error : " + xmlhttp.statusText );
-						return -4;
-					}
+				if ( xmlhttp.readyState == 4 && xmlhttp.status == 200 ) {
+					callback( xmlhttp.responseText );
+				} else {
+					console.log( "XMLHTTP Response error : " + xmlhttp.statusText );
+					return -4;
 				}
 			}
 		}
