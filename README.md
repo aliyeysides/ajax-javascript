@@ -2,12 +2,13 @@ ajax-javascript
 ===============
 
 Simple, lightwight and easy to use ajax function in pure javascript
-<p>
-This function is written in pure javascript only. No jQuery or other dependencies.
-I expect that this is gonna help you to do your job easily if you want ajax without jQuery.
-</p>
+
+This function is written in pure javascript only. No jQuery or other dependencies.<br/>
+I expect that this is gonna help you to do your job easily if you want ajax without jQuery.<br/>
+There are various options you can take. POST or GET method, using predefined callback function, passing function body in the middle of the parameters and even jsonp option.
+
 <h2>Installation</h2>
-<p>Simple! Just include ajax-javascript.js file somewhere.</p>
+Simple! Just include ajax-javascript.js file somewhere.
 ```html
 <script src="/path/to/ajax-javascript.js"></script>
 ```
@@ -85,31 +86,31 @@ ajax( "http://www.example.com/path/to/api.json" , {
 ```javascript
 callback : "CallbackFunctionName"
 ```
-<p>Defines callback function with predefined function name</p>
+Defines callback function with predefined function name. You can set any function in the document as callback function. That function will be executed when your broswer received response data from the server.
 <h4>Callback with function element</h4>
 ```javascript
 callback : function( data ){
 	// code here
 };
 ```
-<p>You can define callback function within the option parameter</p>
+You can define callback function within the option parameter. If you are lazy and you just wanna pass your callback function directly, just giving your callback function like above.
 <h3>Data</h3>
 ```javascript
 // data must be object element(not array)
 data : { /* data object here */ }
 ```
-<p>Sets variables to be sent</p>
+Sets variables to be sent
 <h3>Cross Domain</h3>
 ```javascript
 jsonp : true
 ```
-<p>You can also make a cross domain request. Simply set jsonp to true and ajax function will do the script injection for you</p>
+You can also make a cross domain request. Simply set jsonp option to true and ajax function will do the script injection for you. Make sure your remote server is safe
 <h3>Post</h3>
 ```javascript
 // Default is false (GET)
 isPost : true // POST
 isPost : false // GET
 ```
-<p>Default is GET. In order to send POST request, you can simply set isPost option to true.</p>
+Default is GET. In order to send POST request, you can simply set isPost option to true.
 <h2>Author</h2>
-<p>https://www.linkedin.com/in/samma</p>
+https://www.linkedin.com/in/samma
