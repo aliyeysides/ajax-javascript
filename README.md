@@ -97,7 +97,7 @@ You can define callback function within the option parameter. If you are lazy an
 <h3>Data</h3>
 ```javascript
 // data must be object element(not array)
-data : { /* data object here */ }
+data : { /* data object/string here */ }
 ```
 Sets variables to be sent
 <h3>Cross Domain</h3>
