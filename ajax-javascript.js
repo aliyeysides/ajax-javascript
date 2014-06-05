@@ -2,9 +2,19 @@
  * Simple, lightwight and easy to use ajax function in pure javascript
  * @param  String url     Target URL
  * @param  Object options Please read README.md
+ * @return 
+ * 			-1 : No target URL
+ * 			-2 : Creating XMLHTTP error
+ * 			-3 : XMLHTTP Request error
+ * 			-4 ; XMLHTTP Response error
  */
 function ajax( url , options )
 {
+	if ( !url ) {
+		console.log( "No Target URL is provided. URL : " + url );
+		return -1;
+	}
+
 	var parameters = '';
 	var callback = false; // callback function
 
@@ -59,21 +69,34 @@ function ajax( url , options )
 			xmlhttp = new ActiveXObject( "Microsoft.XMLHTTP" );
 		}
 
+		if ( !xmlhttp ) {
+			console.log( "XMLHTTP initiating is failed" );
+			return -2;
+		}
+
 		if ( callback ) {
 			xmlhttp.onreadystatechange = function() {
 				if ( xmlhttp.readyState == 4 && xmlhttp.status == 200 ) {
 					callback( xmlhttp.responseText );
+				} else {
+					console.log( "XMLHTTP Response error : " + xmlhttp.statusText );
+					return -4;
 				}
 			}
 		}
 
-		if ( options.isPost ) {
-			xmlhttp.open( "POST" , url , true );
-			xmlhttp.setRequestHeader( "Content-type","application/x-www-form-urlencoded" );
-			xmlhttp.send( parameters );
-		} else {
-			xmlhttp.open( "GET" , url + '?' + parameters , true );
-			xmlhttp.send();
+		try {
+			if ( options.isPost ) {
+				xmlhttp.open( "POST" , url , true );
+				xmlhttp.setRequestHeader( "Content-type","application/x-www-form-urlencoded" );
+				xmlhttp.send( parameters );
+			} else {
+				xmlhttp.open( "GET" , url + '?' + parameters , true );
+				xmlhttp.send();
+			}
+		} catch ( err ) {
+			console.log( "XMLHTTP Request error : " + err.message );
+			return -3;
 		}
 	}
 }
