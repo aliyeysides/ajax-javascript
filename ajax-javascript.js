@@ -46,6 +46,7 @@ function ajax( url , options )
 		}
 
 		window[ 'cb' + cbnum ] = function( data ) {
+
 			try {
 				callback( data );
 			}

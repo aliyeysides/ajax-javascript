@@ -77,6 +77,19 @@
 			</div>
 
 			<h2 id="cross">Cross Domain Example</h2>
+			<div class="row">
+				<div class="col-sm-1"></div>
+				<div class="col-sm-5">
+					<label for="remourl">Target URL</label>
+					<input type="text" class="form-control" id="remourl" placeholder="Enter URL"><br>
+					<label for="remodata">Data</label>
+					<input type="text" class="form-control" id="remodata" placeholder="key=value&key2=value2"><br>
+					<button type="button" class="btn btn-primary" onclick="jsonpTest()">Send</button>
+				</div>
+				<div class="col-sm-6">
+					<label>Result</label><textarea class="form-control" rows="5" id="remoResult"></textarea>
+				</div>
+			</div>
 		</div>
 
 	</div><!-- /.container -->
@@ -94,6 +107,22 @@
 
 		ajax( url , {
 			isPost : isPost,
+			data : data,
+			callback : function( data ) {
+				resultTextArea.value = data;
+				console.log( data );
+			}
+		} );
+	}
+
+	function jsonpTest()
+	{
+		var resultTextArea = document.getElementById( "remoResult" );
+		var url = document.getElementById( "remourl" ).value;
+		var data = document.getElementById( "remodata" ).value;
+
+		ajax( url , {
+			jsonp : true,
 			data : data,
 			callback : function( data ) {
 				resultTextArea.value = data;
