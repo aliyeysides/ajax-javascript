@@ -30,7 +30,7 @@ function ajax( url , options )
 		for ( key in options.data ) {
 			parameters = parameters + '&' + key + '=' + options.data[ key ];
 		}
-	} else if ( typeof options.data === 'string' ) ) {
+	} else if ( typeof options.data === 'string' ) {
 		parameters = parameters + options.data;
 	}
 
