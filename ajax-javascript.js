@@ -28,7 +28,8 @@ function ajax( url , options )
 	// Creating url string from the parameters
 	if ( options.data instanceof Object ) {
 		for ( key in options.data ) {
-			parameters = parameters + '&' + key + '=' + options.data[ key ];
+			if ( parameters.length > 0 ) parameters = parameters + '&';
+			parameters = parameters + key + '=' + options.data[ key ];
 		}
 	} else if ( typeof options.data === 'string' ) {
 		parameters = parameters + options.data;
